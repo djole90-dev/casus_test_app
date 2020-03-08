@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { HeaderContainer } from './Header.styles';
 
+const Header = () => <HeaderContainer>Header</HeaderContainer>;
 
-const Header = () => (
-  <div>
-    Header
-  </div>
-)
-
-export default Header
+export default Header;

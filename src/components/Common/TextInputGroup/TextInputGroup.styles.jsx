@@ -6,7 +6,7 @@ const iconStyles = css`
   width:10px;
   height:10px;
   position: absolute;
-  right: 14px;
+  right: 16px;
   bottom: 18px;
   height: 14px;
   width: 14px;
@@ -30,8 +30,8 @@ export const InputGroupContainer = styled(Box)`
   display:flex;
   flex-direction: column;
   margin-bottom:24px;
-  position: relative;
 `;
+
 export const Label = styled(Typography)`
   font-size:14px;
   color: ${({ theme }) => theme.palette.primary.textLight};
@@ -40,12 +40,21 @@ export const Label = styled(Typography)`
   line-height: 1;
 `;
 
+export const InputWrapper = styled(Box)`
+  position:relative;
+`
+
+const setPadding = props => {
+ return props.type === 'password' ? '35px' : '16px'
+}
+
 export const InputEl = styled('input')`
   background:#fff;
   border: 1px solid ${({ theme }) => theme.palette.primary.borders};
   border-radius:3px;
-  padding:17px 16px 16px 16px;
+  padding:17px ${setPadding} 16px 16px;
   color: ${({ theme }) => theme.palette.primary.main};
+  width:100%;
   &::before {
     display:none;
   }
@@ -53,10 +62,13 @@ export const InputEl = styled('input')`
     display:none;
   }
   &:focus {
-    outline-color: ${({ theme }) => theme.palette.primary.textLight};
+    border:1px solid ${({ theme }) => theme.palette.primary.textLight};
+    outline: none;
   }
   &::placeholder {
     opacity: .66;
     letter-spacing: .2px;
   }
 `;
+
+

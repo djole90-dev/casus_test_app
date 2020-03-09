@@ -7,14 +7,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../../themes/theme';
 import logo_image from '../../assets/logo.JPG'
 
-const MainLayout = ({ children, isAuthenticated = false }) => (
+const MainLayout = ({ children, isAuthenticated = true }) => (
   <StylesProvider injectFirst>
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <StyledContainer>
-          <Logo src={logo_image} />
-          {isAuthenticated && <Header />}
+          {isAuthenticated ? <Header /> : <Logo src={logo_image} />}
           {children}
         </StyledContainer>
       </ThemeProvider>

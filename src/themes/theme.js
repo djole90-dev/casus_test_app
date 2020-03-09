@@ -10,7 +10,7 @@ const theme = createMuiTheme({
       blue: Colors.blue,
       borders: Colors.borders,
       bgLight: Colors.bgLight,
-      bgDocument: Colors.bgDocument
+      bgApp: Colors.bgApp
     }
   },
   typography: {

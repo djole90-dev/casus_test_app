@@ -7,8 +7,12 @@ export const StyledContainer = styled(Box)`
   margin:0 auto;
   display:flex;
   flex-direction:column;
-  height:100%;
-  position:relative;
+  position:fixed;
+  top:0;
+  left: 0;
+  right:0;
+  bottom:0;
+  background-color: ${({theme}) => theme.palette.primary.bgApp}
 `
 
 export const Logo = styled('img')`

@@ -1,17 +1,18 @@
 import React, { useState, Fragment } from 'react';
+import { Heading } from '../common-styles';
 import {
   Form,
-  Heading,
-  Text,
-  LoginRedirect,
   CheckboxContainer,
   AcceptUrl,
-  RCP
+  RCP,
+  PasswordContainer
 } from './RegisterForm.styles';
 import reCAPTCHA_image from '../../../assets/recaptcha.JPG';
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
 import CustomButton from '../../Common/CustomButton/CustomButton';
 import CheckboxGroup from '../../Common/CheckboxGroup/CheckboxGroup';
+import FormFooter from '../FormFooter/FormFooter';
+import PasswordStrengthMeter from '../../PasswordStrengthMeter/PasswordStrengthMeter';
 
 const CbLabel = (
   <Fragment>
@@ -25,10 +26,11 @@ const RegisterForm = () => {
   const [ password, setPassword ] = useState('');
   const [ termsChecked, setTermsChecked ] = useState(false);
   const [ subscribed, setSubscribed ] = useState(false);
+  const [ strVisible, setStrVisibility ] = useState(false);
 
   return (
     <Form>
-      <Heading>Registrierung</Heading>
+      <Heading variant="h3">Registrierung</Heading>
       <TextInputGroup
         type="email"
         label="Emailadresse"
@@ -38,14 +40,20 @@ const RegisterForm = () => {
         onChange={({ target }) => setEmail(target.value)}
         required
       />
-      <TextInputGroup
-        type="password"
-        label="Passwort"
-        name="password"
-        value={password}
-        onChange={({ target }) => setPassword(target.value)}
-        required
-      />
+
+      <PasswordContainer>
+        <TextInputGroup
+          type="password"
+          label="Passwort"
+          name="password"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+          onFocus={() => setStrVisibility(true)}
+          onBlur={() => setStrVisibility(false)}
+          required
+        />
+        {strVisible && <PasswordStrengthMeter />}
+      </PasswordContainer>
       <CheckboxContainer>
         <CheckboxGroup
           label={CbLabel}
@@ -60,11 +68,12 @@ const RegisterForm = () => {
         />
       </CheckboxContainer>
       <RCP src={reCAPTCHA_image} alt="Dummy reCAPTCHA" />
-      <CustomButton title="CASUS-Konto erstellen" />
-      <Text align="center">
-        Haben Sie bereits ein Konto?
-        <LoginRedirect to="/login">Log in</LoginRedirect>
-      </Text>
+      <CustomButton title="CASUS-Konto erstellen" actionbtn="true"/>
+      <FormFooter
+        text="Haben Sie bereits ein Konto?"
+        url="/login"
+        urlText="Log in"
+      />
     </Form>
   );
 };

@@ -12,24 +12,14 @@ export const Heading = styled(Typography)`
   letter-spacing: .2px;
 `
 export const Form = styled('form')`
-  margin-top:109px;
-`
-export const Text = styled(Typography)`
-  line-height: 1.57;
-  letter-spacing: 0.2px;
-  font-size:14px;
-  color: ${({theme}) => theme.palette.primary.textLight};
-  text-aligh:center;
-  margin-top: 30px;
-`
-export const LoginRedirect = styled(Link)`
-  color: ${({theme}) => theme.palette.primary.blue};
-  font-weight: 500;
-  margin-left:2px;
-  font-family:inherit;
+  margin-top:29px;
 `
 export const CheckboxContainer = styled(Box)`
 
+`
+export const PasswordContainer = styled(Box)`
+  position:relative;
+  width:100%;
 `
 export const AcceptUrl = styled(Link)`
   text-decoration: underline;

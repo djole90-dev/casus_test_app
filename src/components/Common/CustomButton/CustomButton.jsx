@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from './CustomButton.styles';
+import { ButtonEl } from './CustomButton.styles';
 
 const CustomButton = ({ title, ...otherProps }) => (
-  <Button {...otherProps}>{title}</Button>
+  <ButtonEl {...otherProps}>{title}</ButtonEl>
 );
 
 export default CustomButton;

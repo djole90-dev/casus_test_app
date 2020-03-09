@@ -4,5 +4,6 @@ export default {
   borders: '#ebebed',
   textLight: '#888a93',
   bgLight:'#fcfcfc',
-  orangeRed: '#f63434'
+  orangeRed: '#f63434',
+  bgApp: '#f9f9f9'
 }

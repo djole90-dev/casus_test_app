@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding:0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #212121;
@@ -21,15 +22,11 @@ code {
     monospace;
 }
 
-#root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 a {
   text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
 

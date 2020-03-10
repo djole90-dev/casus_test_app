@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, InputBase } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const iconStyles = css`
@@ -49,8 +49,6 @@ const setPadding = props => {
  return props.type === 'password' ? '35px' : '16px'
 }
 
-
-
 export const InputEl = styled('input')`
   background:#fff;
   border: 1px solid ${({ theme, error }) => error ? 'red' : theme.palette.primary.borders};
@@ -58,12 +56,6 @@ export const InputEl = styled('input')`
   padding:17px ${setPadding} 16px 16px;
   color: ${({ theme }) => theme.palette.primary.main};
   width:100%;
-  &::before {
-    display:none;
-  }
-  &::after {
-    display:none;
-  }
   &:focus {
     border:1px solid ${({ theme }) => theme.palette.primary.textLight};
     outline: none;

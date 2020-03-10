@@ -23,8 +23,8 @@ export const Text = styled(Typography)`
 `
 
 export const StyledInputBase = styled(InputBase)`
- background:#fff;
-  border: 1px solid ${({ theme }) => theme.palette.primary.borders};
+  background:#fff;
+  border: 1px solid ${({ theme, error }) => error ? 'red' : theme.palette.primary.borders};
   border-radius:3px;
   padding:11px 16px 9px 16px;
   color: ${({ theme }) => theme.palette.primary.main};

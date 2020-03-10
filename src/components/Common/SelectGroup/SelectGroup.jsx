@@ -7,7 +7,7 @@ import {
   Text
 } from './SelectGroup.styles';
 
-const SelectGroup = ({ handleChange, value, options }) => {
+const SelectGroup = ({ handleChange, value, options, name, error }) => {
   return (
     <FormControl style={{ width: '100%' }}>
       <Label>Ihre Position</Label>
@@ -15,7 +15,7 @@ const SelectGroup = ({ handleChange, value, options }) => {
         labelId="demo-customized-select-label"
         value={value || 1}
         onChange={handleChange}
-        input={<StyledInputBase placeholder="123" />}
+        input={<StyledInputBase name={name} error={error} />}
         displayEmpty
       >
         <MenuItem value={1} disabled>

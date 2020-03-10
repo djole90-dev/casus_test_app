@@ -8,7 +8,8 @@ const CheckboxGroup = ({
   checked = false,
   multiline,
   handleChange,
-  error
+  error,
+  ...otherProps
 }) => {
   let checkboxStyles = {
       color: Colors.borders,
@@ -31,6 +32,7 @@ const CheckboxGroup = ({
           value="checkedE"
           color="primary"
           style={checkboxStyles}
+          {...otherProps}
         />
       }
       label={<Label>{label}</Label>}

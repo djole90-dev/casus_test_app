@@ -4,36 +4,53 @@ import { Form } from './LoginForm.styles';
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
 import CustomButton from '../../Common/CustomButton/CustomButton';
 import FormFooter from '../FormFooter/FormFooter';
+import MessagePopup from '../../Common/MessagePopup/MessagePopup';
+
 
 const RegisterForm = () => {
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [ state, setState ] = useState({email: '', password: ''})
+  const [ errorMessage, setErrorMessage ] = useState(null);
+
+  const handleSubmit = e => {
+    setErrorMessage(null)
+    console.log(state)
+    e.preventDefault()
+  }
+
+  const handleChange = e => {
+    const { name, value } = e.target
+    setState(prev => ({...prev, [name]: value}))
+  }
   
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Heading variant="h3">Log in</Heading>
       <TextInputGroup
         type="email"
         label="Ihre Email adresse angeben"
         name="email"
-        value={email}
+        value={state.email}
         placeholder="z.B. marina@meyer.ch"
-        onChange={({ target }) => setEmail(target.value)}
+        onChange={handleChange}
         required
       />
       <TextInputGroup
         type="password"
         label="Passwort"
         name="password"
-        value={password}
-        onChange={({ target }) => setPassword(target.value)}
+        value={state.password}
+        onChange={handleChange}
         required
       />
-      <CustomButton title="Log in" actionbtn="true"/>
+      <CustomButton title="Log in" actionbtn="true" type="submit" />
       <FormFooter
         text="Haben Sie noch kein Konto?"
         url="/"
         urlText="Registrierung"
+      />
+      <MessagePopup
+        errorMessage={errorMessage}
+        onClose={() => setErrorMessage(null)}
       />
     </Form>
   );

@@ -13,35 +13,12 @@ const CbLabel = (
     <AcceptUrl to="/123">Nutzungsbedingungen*</AcceptUrl>
   </Fragment>
 );
-const initialErrorState = {terms: false, email: false, password: false}
 
-const StepOne = ({values, handleChange, handleStepChange }) => {
-  const { email, password } = values
+
+const StepOne = ({values, handleChange, handleStepChange, setTermsChecked, errors }) => {
+  const { email, password, termsChecked } = values
   const [ strVisible, setStrVisibility ] = useState(false);
   const [ subscribed, setSubscribed ] = useState(false);
-  const [ termsChecked, setTermsChecked ] = useState(false)
-
-  const [ errors, setErrors ] = useState(initialErrorState)
-
-  const clearErrors = () => setErrors(initialErrorState)
-
-  const handleNextClick = () => {
-    clearErrors()
-    if (!termsChecked || !email || !password) {
-      if (!termsChecked) {
-        setErrors(prev => ({...prev, terms: true}))
-      } 
-      if (!email) {
-        setErrors(prev => ({...prev, email: true}))
-      }
-      if (!password) {
-        setErrors(prev => ({...prev, password: true}))
-
-      }
-      return
-    }
-    handleStepChange(2)
-  }
 
   return (
     <Fragment>
@@ -69,13 +46,14 @@ const StepOne = ({values, handleChange, handleStepChange }) => {
           error={errors.password}
           required
         />
-        {strVisible && <PasswordStrengthMeter />}
+        {strVisible && <PasswordStrengthMeter password={password} />}
       </PasswordContainer>
       <CheckboxContainer>
         <CheckboxGroup
           label={CbLabel}
           checked={termsChecked}
-          handleChange={() => setTermsChecked(!termsChecked)}
+          name="terms"
+          handleChange={() => setTermsChecked(prev => !prev)}
           error={termsChecked ? false : errors.terms}
         />
         <CheckboxGroup
@@ -86,7 +64,7 @@ const StepOne = ({values, handleChange, handleStepChange }) => {
         />
       </CheckboxContainer>
       <RCP src={reCAPTCHA_image} alt="Dummy reCAPTCHA" />
-      <CustomButton title="Weiter" actionbtn="true" onClick={handleNextClick}/>
+      <CustomButton title="Weiter" actionbtn="true" onClick={handleStepChange}/>
       <FormFooter
         text="Haben Sie bereits ein Konto?"
         url="/login"

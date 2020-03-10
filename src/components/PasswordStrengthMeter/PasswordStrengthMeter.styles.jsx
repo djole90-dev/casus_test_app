@@ -18,6 +18,12 @@ export const Content = styled(Box)`
   margin: 0 auto;
 `;
 
+const getColorByPasswordStrength = props => {
+  if (props.strength > 25) {
+    return 'green'
+  }
+}
+
 export const LinearProgress = styled(LinearProgressComponent)`
   height: 9px;
   border: 1px solid ${({ theme }) => theme.palette.primary.borders};
@@ -31,11 +37,12 @@ export const CheckContainer = styled(Box)`
 export const CheckIcon = styled(CheckIconComponent)`
   margin-right: 9px;
   color: ${({ theme }) => theme.palette.primary.borders};
-
+  color: ${getColorByPasswordStrength}
 `
 export const Text = styled(Typography)`
   font-size:14px;
   letter-spacing: 0.2px;
+  color: ${getColorByPasswordStrength}
 `
 export const Status = styled(Typography)`
   font-weight: 500;

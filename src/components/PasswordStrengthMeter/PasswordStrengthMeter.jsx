@@ -9,20 +9,21 @@ import {
   CheckIcon
 } from './PasswordStrengthMeter.styles';
 
-const CheckEl = ({label}) => (
+const CheckEl = ({label, strength}) => (
   <CheckContainer>
-    <CheckIcon />
-    <Text>{label}</Text>
+    <CheckIcon  strength={strength}/>
+    <Text strength={strength}>{label}</Text>
   </CheckContainer>
 );
 
 const PasswordStrengthMeter = ({ password }) => {
+  const strength = password.length > 7 ? 100 : 25
   return (
     <Container>
       <Content>
-        <CheckEl label="Mindestens 8 Zeichen" />
-        <Status>Sehr Schwach</Status>
-        <LinearProgress variant="determinate" value={25} />
+        <CheckEl label="Mindestens 8 Zeichen" strength={strength}/>
+        <Status strength={strength}>{strength < 26 ? 'Sehr Schwach' : 'Ok'}</Status>
+        <LinearProgress variant="determinate" value={strength}/>
       </Content>
     </Container>
   );

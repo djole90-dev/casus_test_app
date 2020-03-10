@@ -10,14 +10,9 @@ const selectOptions = [
   { label: 'Position 3', value: 'Position 3' }
 ];
 
-const StepTwo = ({ values, handleChange, handleSelectChange, handleSubmit }) => {
+const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
   const { firstname, lastname, position } = values;
-  const [ errors, setErrors ] = useState({})
-
-  const handleRegisterClick = () => {
-
-  }
-
+ 
   return (
     <Fragment>
       <Heading variant="h3">Noch einen Schritt</Heading>
@@ -28,6 +23,7 @@ const StepTwo = ({ values, handleChange, handleSelectChange, handleSubmit }) => 
         value={firstname}
         placeholder="z.B. Marina"
         onChange={handleChange}
+        error={errors.firstname}
         required
       />
       <TextInputGroup
@@ -36,18 +32,28 @@ const StepTwo = ({ values, handleChange, handleSelectChange, handleSubmit }) => 
         name="lastname"
         value={lastname}
         onChange={handleChange}
+        error={errors.lastname}
         required
       />
       <SelectGroup
-        handleChange={handleSelectChange}
+        handleChange={handleChange}
+        name="position"
         value={position}
         options={selectOptions}
+        error={errors.position}
         required
       />
       <CustomButton
         title="CASUS-Konto erstellen"
         actionbtn="true"
         type="submit"
+        style={{marginBottom: '24px'}}
+      />
+       <CustomButton
+        title="Zurück"
+        actionbtn="true"
+        type="button"
+        onClick={handleStepChange}
       />
     </Fragment>
   );

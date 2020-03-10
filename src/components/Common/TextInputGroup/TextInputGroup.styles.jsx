@@ -30,6 +30,7 @@ export const InputGroupContainer = styled(Box)`
   display:flex;
   flex-direction: column;
   margin-bottom:24px;
+  width:100%;
 `;
 
 export const Label = styled(Typography)`
@@ -48,9 +49,11 @@ const setPadding = props => {
  return props.type === 'password' ? '35px' : '16px'
 }
 
+
+
 export const InputEl = styled('input')`
   background:#fff;
-  border: 1px solid ${({ theme }) => theme.palette.primary.borders};
+  border: 1px solid ${({ theme, error }) => error ? 'red' : theme.palette.primary.borders};
   border-radius:3px;
   padding:17px ${setPadding} 16px 16px;
   color: ${({ theme }) => theme.palette.primary.main};

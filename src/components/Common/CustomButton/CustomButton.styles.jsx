@@ -33,6 +33,9 @@ const actionButtonStyles = css`
   background: ${({theme}) => theme.palette.primary.blue};
   border-radius:3px;
   font-weight:500;
+  &:hover {
+    background-color: #1c69f8;
+  }
 `
 
 const getBtnStyles = props => {

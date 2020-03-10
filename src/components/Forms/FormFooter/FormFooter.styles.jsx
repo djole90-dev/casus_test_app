@@ -10,6 +10,7 @@ export const Text = styled(Typography)`
   text-aligh:center;
   margin-top: 30px;
 `;
+
 export const URL = styled(Link)`
   color: ${({ theme }) => theme.palette.primary.blue};
   font-weight: 500;

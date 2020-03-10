@@ -7,7 +7,7 @@ const comparePathname = (pathname, path) =>
 
 const Navigation = ({ location: { pathname } }) => (
   <Nav>
-    <NavLink to="/dashboard" active={comparePathname(pathname, '/dashboard')}>
+    <NavLink to="/" active={comparePathname(pathname, '/')}>
       <Text>Dashboard</Text>
     </NavLink>
     <NavLink to="/dokumente" active={comparePathname(pathname, '/dokumente')}>

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
 import Main from './pages/Main/Main'
 
-const App = ({ isAuthenticated = true }) => {
+const App = ({ isAuthenticated = false }) => {
   let content;
 
   if (!isAuthenticated) {

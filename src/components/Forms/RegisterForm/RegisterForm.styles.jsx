@@ -13,6 +13,7 @@ export const Heading = styled(Typography)`
 `
 export const Form = styled('form')`
   margin-top:29px;
+  width:100%;
 `
 export const CheckboxContainer = styled(Box)`
 

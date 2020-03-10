@@ -4,6 +4,7 @@ import { Notifications, ModeComment } from '@material-ui/icons';
 
 export const IconsContainer = styled(Box)`
   display:flex;
+  margin-right:218px;
 `;
 const iconStyles = css`
   height: 22px;

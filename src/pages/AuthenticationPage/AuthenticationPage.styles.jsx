@@ -31,13 +31,16 @@ export const AuthSection = styled(Box)`
   flex-grow:1;
   background: ${({ theme }) => theme.palette.primary.bgLight};
   overflow-y:auto;
-  padding: 80px 0;
+  display:flex;
+  align-items:center;
 `;
 
 export const AuthContent = styled(Box)`
   width:320px;
   margin-right:278px;
   margin-left:auto;
+  display: flex;
+  align-items:center;
 `
 
 export const Container = styled(Box)`

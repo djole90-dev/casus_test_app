@@ -4,6 +4,7 @@ import Navigation from './Navigation/Navigation';
 import DropdownMenu from '../Common/DropdownMenu/DropdownMenu';
 import {
   HeaderContainer,
+  Container,
   Logo,
   Text,
   ArrowDropDownIcon,
@@ -23,8 +24,10 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo src={logo_image} alt="header logo" />
-      <HeaderIcons />
-      <Navigation />
+      <Container>
+        <HeaderIcons />
+        <Navigation />
+      </Container>
       <DropdownWrapper>
         <DropdownMenu
           actionText={actionText}

@@ -10,10 +10,10 @@ import ConstultingPage from './ConsultingPage/ConsultingPage'
 const Main = () => (
   <Container>
     <Switch>
-      <Route path="/dashboard" component={DashboardPage} />
-      <Route path="/dokumente" component={DocumentsPage} />
-      <Route path="/vorlagen" component={TemplatesPage} />
-      <Route path="/rechtsberatung" component={ConstultingPage} />
+      <Route exact path="/" component={DashboardPage} />
+      <Route exact path="/dokumente" component={DocumentsPage} />
+      <Route exact path="/vorlagen" component={TemplatesPage} />
+      <Route exact path="/rechtsberatung" component={ConstultingPage} />
     </Switch>
   </Container>
 )

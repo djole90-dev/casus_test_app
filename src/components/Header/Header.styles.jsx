@@ -12,10 +12,21 @@ export const HeaderContainer = styled('header')`
   padding: 0 54px 0 64px;
 `;
 
+export const Container = styled(Box)`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  align-content:center;
+  width:100%;
+  max-width:1440px;
+  margin: 0 auto;
+`
+
 export const Logo = styled('img')`
   width:77px;
   height: 17px;
-  margin-right:128px;
+  position: absolute;
+  left: 64px;
 `;
 
 export const Text = styled(Typography)`

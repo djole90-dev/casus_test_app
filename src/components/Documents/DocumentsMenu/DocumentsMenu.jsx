@@ -10,8 +10,26 @@ import {
   Text
 } from './DocumentsMenu.styles';
 
-const DocumentsMenu = () => {
+const ListItem = ({ text, active, name, onClick }) => (
+ 
+    <MenuItem onClick={onClick}>
+      <Text active={active} data-categoryname={name}>
+        {text}
+      </Text>
+    </MenuItem>
+  
+);
+
+const DocumentsMenu = ({
+  categories = [ 'Category 1', 'Category 2', 'Category 3' ]
+}) => {
   const [ collapsed, setCollaps ] = useState(false);
+  const [ selectedCategory, setSelectedCategory ] = useState(
+    categories.length ? categories[0] : null
+  );
+  const handleListItemClick = (e) => {
+    setSelectedCategory(e.target.dataset.categoryname)
+  };
 
   return (
     <Container>
@@ -22,15 +40,15 @@ const DocumentsMenu = () => {
       </Box>
       <Collapse in={collapsed}>
         <ListContainer>
-          <MenuItem>
-            <Text>Menu 1</Text>
-          </MenuItem>
-          <MenuItem>
-            <Text>Menu 2</Text>
-          </MenuItem>
-          <MenuItem>
-            <Text>Menu 3</Text>
-          </MenuItem>
+          {categories.map((cat) => (
+            <ListItem
+              onClick={handleListItemClick}
+              text={cat}
+              name={cat}
+              key={cat}
+              active={cat === selectedCategory ? 'true' : null}
+            />
+          ))}
         </ListContainer>
       </Collapse>
     </Container>

@@ -22,7 +22,7 @@ const PasswordStrengthMeter = ({ password }) => {
     <Container>
       <Content>
         <CheckEl label="Mindestens 8 Zeichen" strength={strength}/>
-        <Status strength={strength}>{strength < 26 ? 'Sehr Schwach' : 'Ok'}</Status>
+        <Status strength={strength}>{strength < 26 ? 'Sehr Schwach' : 'Mega super stark :)'}</Status>
         <LinearProgress variant="determinate" value={strength}/>
       </Content>
     </Container>

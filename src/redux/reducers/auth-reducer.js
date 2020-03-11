@@ -11,12 +11,14 @@ export default (state = initialState, action) => {
     case AuthTypes.REGISTER_START:
     case AuthTypes.LOGIN_START:
     case AuthTypes.REGISTER_SUCCESS:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: false };
     case AuthTypes.LOGIN_SUCCESS:
-      return { ...state, currentUser: action.payload, isLoading: false };
+      return { ...state, currentUser: action.payload, isLoading: false, isAuthenticated: true };
     case AuthTypes.REGISTER_FAIL:
     case AuthTypes.LOGIN_FAIL:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false }
+    case AuthTypes.LOGOUT:
+      return initialState
     default:
       return state;
   }

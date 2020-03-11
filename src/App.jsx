@@ -1,23 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import MainLayout from './layout/MainLayout/MainLayout';
 import { Switch, Route } from 'react-router-dom';
 import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
-import Main from './pages/Main/Main'
+import Main from './pages/Main/Main';
 
-const App = ({ isAuthenticated = false }) => {
+const App = ({ isAuthenticated }) => {
   let content;
 
   if (!isAuthenticated) {
-    content =  <Switch><Route path="/" component={AuthenticationPage} /></Switch>
+    content = (
+      <Switch>
+        <Route path="/" component={AuthenticationPage} />
+      </Switch>
+    );
   } else {
-    content = <Main />
+    content = <Main />;
   }
 
-  return (
-    <MainLayout>
-        {content}
-    </MainLayout>
-  );
+  return <MainLayout>{content}</MainLayout>;
 };
 
-export default App;
+const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
+  isAuthenticated
+});
+
+export default connect(mapStateToProps)(App);

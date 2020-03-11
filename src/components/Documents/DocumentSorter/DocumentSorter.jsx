@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { DocumentActions } from '../../../redux/actions';
 import DropdownMenu from '../../Common/DropdownMenu/DropdownMenu';
 import {
   SortOptContainer,
@@ -9,33 +11,53 @@ import {
   ArrowRightIcon
 } from './DocumentSorter.styles';
 
+const SortOption = ({ children }) => (
+  <SortOptContainer>
+    <Option>
+      <Label>Titel:</Label>
+    </Option>
+    <Text>
+      {children}
+    </Text>
+  </SortOptContainer>
+);
+
 const DocumentSorter = () => {
+  const dispatch = useDispatch();
+  const [ actionText, setActionText ] = useState('Sorting')
+
+  const handleAZClick = useCallback(
+    () => {
+      dispatch(DocumentActions.sortDocuments_A_Z());
+      setActionText( <Fragment> A <ArrowRightIcon /> Z </Fragment>)
+    },
+    [ dispatch ]
+  );
+
+  const handleZAClick = useCallback(
+    e => {
+      dispatch(DocumentActions.sortDocuments_Z_A());
+      setActionText( <Fragment> Z <ArrowRightIcon /> A </Fragment>)
+    },
+    [ dispatch ]
+  );
+
   return (
     <Fragment>
       <DropdownMenu
-        actionText={'Sorting'}
+        actionText={actionText}
         width={192}
         menuDistanceTop="-1px"
         borderRadius="4px"
         btnwhite="true"
       >
         <DropdownMenuContent>
-          <SortOptContainer>
-            <Option>
-              <Label>Titel:</Label>
-            </Option>
-            <Text>
-              A <ArrowRightIcon /> Z
-            </Text>
-          </SortOptContainer>
-          <SortOptContainer>
-            <Option>
-              <Label>Titel:</Label>
-            </Option>
-            <Text>
-              Z <ArrowRightIcon /> A
-            </Text>
-          </SortOptContainer>
+          <SortOption onClick={handleAZClick}>
+            A <ArrowRightIcon /> Z
+          </SortOption>
+          <SortOption onClick={handleZAClick}>
+            Z <ArrowRightIcon /> A
+          </SortOption>
         </DropdownMenuContent>
       </DropdownMenu>
     </Fragment>

@@ -34,13 +34,19 @@ export const Text = styled(Typography)`
   font-size:16px;
   line-height: 1.31;
   letter-spacing: 0.23px;
-  color: #747782;
+  color: ${({ active, theme }) =>
+    active ? theme.palette.primary.main : '#747782'};
+  font-weight: ${({ active }) => active && 'bold'};
+  border-bottom: ${({ active, theme }) =>
+    active ? `3px solid ${theme.palette.primary.main}` : 'transparent'};;
+  width: max-content;
 `;
 
-export const MenuItem = styled(Box)`
+export const MenuItem = styled('div')`
   margin-bottom:22px;
   cursor:pointer;
   transtion:all .2s;
+  
   &:hover {
     opacity: .8;
   }

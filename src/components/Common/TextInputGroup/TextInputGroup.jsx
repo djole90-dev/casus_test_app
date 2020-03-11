@@ -10,8 +10,21 @@ import {
 
 const TextInputGroup = ({ label, ...otherProps }) => {
   const { type } = otherProps;
-
   const [ passwordVisibility, setPasswordVisibility ] = useState('password');
+
+  let passwordIcon;
+
+  if (type === 'password') {
+    if (passwordVisibility === 'password') {
+      passwordIcon = (
+        <VisibilityIcon onClick={() => setPasswordVisibility('text')} />
+      );
+    } else {
+      passwordIcon = (
+        <VisibilityOffIcon onClick={() => setPasswordVisibility('password')} />
+      );
+    }
+  }
 
   return (
     <InputGroupContainer>
@@ -21,16 +34,7 @@ const TextInputGroup = ({ label, ...otherProps }) => {
           {...otherProps}
           type={type !== 'password' ? type : passwordVisibility}
         />
-        {type === 'password' &&
-        passwordVisibility === 'password' && (
-          <VisibilityIcon onClick={() => setPasswordVisibility('text')} />
-        )}
-        {type === 'password' &&
-        passwordVisibility !== 'password' && (
-          <VisibilityOffIcon
-            onClick={() => setPasswordVisibility('password')}
-          />
-        )}
+        {passwordIcon}
       </InputWrapper>
     </InputGroupContainer>
   );

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
 import CustomButton from '../../Common/CustomButton/CustomButton';
 import SelectGroup from '../../Common/SelectGroup/SelectGroup';
@@ -24,7 +24,6 @@ const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
         placeholder="z.B. Marina"
         onChange={handleChange}
         error={errors.firstname}
-        required
       />
       <TextInputGroup
         type="text"
@@ -33,7 +32,6 @@ const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
         value={lastname}
         onChange={handleChange}
         error={errors.lastname}
-        required
       />
       <SelectGroup
         handleChange={handleChange}
@@ -41,7 +39,6 @@ const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
         value={position}
         options={selectOptions}
         error={errors.position}
-        required
       />
       <CustomButton
         title="CASUS-Konto erstellen"

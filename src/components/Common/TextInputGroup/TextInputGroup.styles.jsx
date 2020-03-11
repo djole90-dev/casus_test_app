@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import { Box, Typography, InputBase } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const iconStyles = css`

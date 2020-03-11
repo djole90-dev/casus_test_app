@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Form } from './RegisterForm.styles';
+import { withRouter} from 'react-router-dom'
+import { connect } from 'react-redux';
+import { AuthActions } from '../../../redux/actions'
+import Validator from 'validator';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import MessagePopup from '../../Common/MessagePopup/MessagePopup';
-import Validator from 'validator';
+import { Form } from './RegisterForm.styles';
 
 const initialState = {
   email: '',
@@ -22,26 +25,12 @@ const initialErrorState = {
   terms: false
 };
 
-const RegisterForm = () => {
+const RegisterForm = ({history, registerStart}) => {
   const [ state, setState ] = useState(initialState);
   const [ errors, setErrors ] = useState(initialErrorState);
   const [ step, setStep ] = useState(1);
   const [ termsChecked, setTermsChecked ] = useState(false);
   const [ errorMessage, setErrorMessage ] = useState(null);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setErrors((prev) => ({ ...prev, [name]: value && false }));
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    clearErrors();
-    const isValid = validateForm([ 'firstname', 'lastname', 'position' ]);
-    if (!isValid) return;
-    console.log('Submited', state);
-  };
 
   const clearErrors = () => {
     setErrors(initialErrorState);
@@ -78,6 +67,20 @@ const RegisterForm = () => {
     setStep(step);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: value && false }));
+    setState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    clearErrors();
+    const isValid = validateForm([ 'firstname', 'lastname', 'position' ]);
+    if (!isValid) return;
+    registerStart(state, history)
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       {step === 1 ? (
@@ -105,4 +108,8 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+const mapDispatchToProps = dispatch => ({
+  registerStart: (data, history) => dispatch(AuthActions.registerStart(data, history))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(RegisterForm))

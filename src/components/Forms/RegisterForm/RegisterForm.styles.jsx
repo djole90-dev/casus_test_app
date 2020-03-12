@@ -12,8 +12,9 @@ export const Heading = styled(Typography)`
   letter-spacing: .2px;
 `
 export const Form = styled('form')`
-  margin-top:29px;
+  margin-top: 12.1vh;
   width:100%;
+  padding-bottom:20px;
 `
 export const CheckboxContainer = styled(Box)`
 

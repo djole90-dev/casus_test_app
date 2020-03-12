@@ -7,7 +7,6 @@ import Main from './pages/Main/Main';
 
 const App = ({ isAuthenticated }) => {
   let content;
-
   if (!isAuthenticated) {
     content = (
       <Switch>

@@ -1,4 +1,4 @@
-import { AuthTypes, DocumentTypes, MessageTypes } from '../types';
+import { AuthTypes, DocumentTypes, MessageTypes, AppTypes } from '../types';
 
 const initialState = {
   succesMessage: null,
@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
     case DocumentTypes.GET_ALL_FAIL:
     case DocumentTypes.GET_ONE_FAIL:
     case DocumentTypes.EDIT_ONE_FAIL:
+    case AppTypes.MAIN_PAGE_LOAD_FAIL:
       return { ...state, errorMessage: action.payload };
     default:
       return state;

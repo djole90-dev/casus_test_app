@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux'
+import { AuthActions } from '../../redux/actions'
 import HeaderIcons from './HeaderIcons/HeaderIcons';
 import Navigation from './Navigation/Navigation';
 import DropdownMenu from '../Common/DropdownMenu/DropdownMenu';
@@ -9,7 +11,8 @@ import {
   Text,
   ArrowDropDownIcon,
   DropdownWrapper,
-  DropdownMenuContent
+  DropdownMenuContent,
+  LogoutButton
 } from './Header.styles';
 import logo_image from '../../assets/logo.JPG';
 
@@ -20,7 +23,7 @@ const actionText = (
   </Fragment>
 );
 
-const Header = () => {
+const Header = ({ logoutUser }) => {
   return (
     <HeaderContainer>
       <Logo src={logo_image} alt="header logo" />
@@ -33,9 +36,12 @@ const Header = () => {
           actionText={actionText}
           width={192}
           menuDistanceTop="14px"
+          btntype="header-dropdown"
         >
           <DropdownMenuContent>
-            <Text>Log out</Text>
+            <LogoutButton onClick={logoutUser}>
+              <Text>Log out</Text>
+            </LogoutButton>
           </DropdownMenuContent>
         </DropdownMenu>
       </DropdownWrapper>
@@ -43,4 +49,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(AuthActions.logout())
+})
+
+export default connect(null, mapDispatchToProps)(Header);

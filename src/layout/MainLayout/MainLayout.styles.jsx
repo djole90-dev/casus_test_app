@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 import { Box } from '@material-ui/core'
 
+export const OverflowWrapper = styled(Box)`
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+`
+
 export const Container = styled(Box)`
   max-width:1440px;
   width:100%;

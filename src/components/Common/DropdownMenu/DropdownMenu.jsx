@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  StyledButton,
   ButtonWrapper
 } from './DropdownMenu.styles';
 import { Popover } from '@material-ui/core';
+import CustomButton from '../CustomButton/CustomButton'
 
 const DropdownMenu = ({
   actionText,
@@ -11,7 +11,8 @@ const DropdownMenu = ({
   menuDistanceTop,
   borderRadius = 0,
   children,
-  btnwhite
+  btntype,
+  btnwidth
 }) => {
   const [ anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -29,15 +30,16 @@ const DropdownMenu = ({
   return (
     <div>
       <ButtonWrapper>
-        <StyledButton
+        <CustomButton
           aria-controls="simple-menu"
           aria-haspopup="true"
           onClick={handleClick}
           style={actionBtnStyles}
-          btnwhite={btnwhite ? btnwhite : 'false'}
-        >
-          {actionText}
-        </StyledButton>
+          title={actionText}
+          btntype={btntype}
+          width={btnwidth}
+        />
+        
       </ButtonWrapper>
       <Popover
         id={id}

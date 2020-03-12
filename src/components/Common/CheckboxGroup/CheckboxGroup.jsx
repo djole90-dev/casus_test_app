@@ -12,15 +12,15 @@ const CheckboxGroup = ({
   ...otherProps
 }) => {
   let checkboxStyles = {
-      color: Colors.borders,
-      alignSelf: multiline ? 'flex-start' : 'center',
-      transform: `translateY(${multiline ? '-5px' : '0'})`
-  }
+    color: Colors.borders,
+    alignSelf: multiline ? 'flex-start' : 'center',
+    transform: `translateY(${multiline ? '-5px' : '0'})`
+  };
 
   if (error) {
-    checkboxStyles.color = 'red'
+    checkboxStyles.color = 'red';
   } else if (checked) {
-    checkboxStyles.color = Colors.textLight
+    checkboxStyles.color = Colors.textLight;
   }
 
   return (

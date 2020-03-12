@@ -13,6 +13,7 @@ export const DocumentBody = styled(Box)`
   cursor: pointer;
   position:relative;
 `;
+
 export const Title = styled(Typography)`
   font-size:15px;
   line-height: 1.33;
@@ -21,10 +22,3 @@ export const Title = styled(Typography)`
   font-weight:500;
 `;
 
-export const C = styled('img')`
-  height:18px;
-  width: 16px;
-  position: absolute;
-  left: 14px;
-  bottom: 12px;
-`;

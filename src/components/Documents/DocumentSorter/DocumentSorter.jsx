@@ -11,8 +11,8 @@ import {
   ArrowRightIcon
 } from './DocumentSorter.styles';
 
-const SortOption = ({ children }) => (
-  <SortOptContainer>
+const SortOption = ({ children, ...otherProps }) => (
+  <SortOptContainer {...otherProps}>
     <Option>
       <Label>Titel:</Label>
     </Option>
@@ -24,19 +24,20 @@ const SortOption = ({ children }) => (
 
 const DocumentSorter = () => {
   const dispatch = useDispatch();
+
   const [ actionText, setActionText ] = useState('Sorting')
 
   const handleAZClick = useCallback(
     () => {
-      dispatch(DocumentActions.sortDocuments_A_Z());
+      dispatch(DocumentActions.sortDocuments('A_Z'));
       setActionText( <Fragment> A <ArrowRightIcon /> Z </Fragment>)
     },
     [ dispatch ]
   );
 
   const handleZAClick = useCallback(
-    e => {
-      dispatch(DocumentActions.sortDocuments_Z_A());
+    () => {
+      dispatch(DocumentActions.sortDocuments('Z_A'));
       setActionText( <Fragment> Z <ArrowRightIcon /> A </Fragment>)
     },
     [ dispatch ]
@@ -50,6 +51,8 @@ const DocumentSorter = () => {
         menuDistanceTop="-1px"
         borderRadius="4px"
         btnwhite="true"
+        btntype="btn-white"
+        btnwidth="92px"
       >
         <DropdownMenuContent>
           <SortOption onClick={handleAZClick}>

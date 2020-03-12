@@ -19,15 +19,20 @@ export const Content = styled(Box)`
 `;
 
 const getColorByPasswordStrength = props => {
+  if (props.error) {
+    return 'red'
+  }
+
   if (props.strength > 25) {
     return 'green'
-  }
+  } 
 }
 
 export const LinearProgress = styled(LinearProgressComponent)`
   height: 9px;
   border: 1px solid ${({ theme }) => theme.palette.primary.borders};
   opacity: .66;
+  width:95%;
 `;
 
 export const CheckContainer = styled(Box)`

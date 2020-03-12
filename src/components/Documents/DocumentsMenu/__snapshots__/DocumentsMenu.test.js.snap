@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Document Menu Component should match snapshot 1`] = `
+<Styled(Styled(MuiBox))>
+  <Styled(MuiBox)
+    onClick={[Function]}
+  >
+    <Styled(WithStyles(ForwardRef(Typography)))
+      active="true"
+    >
+      <Styled(ArrowDropDownIcon)
+        onClick={[Function]}
+      />
+      CASUS vorlagen
+    </Styled(WithStyles(ForwardRef(Typography)))>
+  </Styled(MuiBox)>
+  <WithStyles(ForwardRef(Collapse))
+    in={true}
+  >
+    <Styled(Styled(MuiBox))>
+      <ListItem
+        active={null}
+        key="Cat1"
+        name="Cat1"
+        onClick={[Function]}
+        text="Cat1"
+      />
+      <ListItem
+        active={null}
+        key="2"
+        name="2"
+        onClick={[Function]}
+        text="2"
+      />
+      <ListItem
+        active={null}
+        key="3"
+        name="3"
+        onClick={[Function]}
+        text="3"
+      />
+    </Styled(Styled(MuiBox))>
+  </WithStyles(ForwardRef(Collapse))>
+</Styled(Styled(MuiBox))>
+`;

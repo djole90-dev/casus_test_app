@@ -7,10 +7,10 @@ import {
   Text
 } from './SelectGroup.styles';
 
-const SelectGroup = ({ handleChange, value, options, name, error }) => {
+const SelectGroup = ({ handleChange, value, options, name, error, label }) => {
   return (
     <FormControl style={{ width: '100%' }}>
-      <Label>Ihre Position</Label>
+      <Label>{label}</Label>
       <Select
         labelId="demo-customized-select-label"
         value={value || 1}

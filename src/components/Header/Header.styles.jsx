@@ -36,6 +36,10 @@ export const Text = styled(Typography)`
   font-weight: ${({dropdown}) => dropdown ? 'bold' : 400};
 `;
 
+export const LogoutButton = styled(Box)`
+  cursor: pointer;
+`
+
 export const ArrowDropDownIcon = styled(ArrowDropDown)`
   opacity: .9;
   color: #fff;

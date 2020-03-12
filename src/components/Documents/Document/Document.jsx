@@ -1,11 +1,11 @@
 import React from 'react';
-import { DocumentBody, Title, C } from './Document.styles';
-import c_image from '../../../assets/c.JPG';
+import { DocumentBody, Title } from './Document.styles';
+import C from '../C_Logo/C_Logo'
 
-const Document = ({ title }) => (
+const Document = ({ title, category }) => (
   <DocumentBody>
     <Title>{title}</Title>
-    <C src={c_image} alt="Casus logo image" />
+    <C category={category}/>
   </DocumentBody>
 );
 

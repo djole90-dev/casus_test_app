@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Typography, ButtonBase } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import SearchIconEl from '@material-ui/icons/Search';
 
 export const TopContent = styled(Box)`
@@ -27,16 +27,10 @@ export const Heading = styled(Typography)`
   margin-right:auto;
 `;
 
-export const SearchBtn = styled(ButtonBase)`
-  width:40px;
-  height: 40px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  padding:0;
-`;
 export const SearchIcon = styled(SearchIconEl)`
-  font-size:20px;
+  font-size:18px;
   color: ${({ theme }) => theme.palette.primary.main};
+  align-self: center;
 `;
 
 

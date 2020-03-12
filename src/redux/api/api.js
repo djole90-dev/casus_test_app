@@ -3,13 +3,20 @@ import axios from 'axios';
 class Api {
   constructor() {
     this.BASE_URL = process.env.REACT_APP_BASE_API_URL;
-    this.headers = { 'Content-Type': 'application/json' };
+    this.defaultHeaders = { 'Content-Type': 'application/json' }
+    this.headers = {};
     this.loginUser = this.loginUser.bind(this)
     this.registerUser = this.registerUser.bind(this)
     this.getAllDocuments = this.getAllDocuments.bind(this)
     this.getOneDocument = this.getOneDocument.bind(this)
     this.editDocument = this.editDocument.bind(this)
-    window.addEventListener('DOMContentLoaded', this.setAuthHeaders.bind(this))
+    this.setAuthHeaders = this.setAuthHeaders.bind(this)
+    this.setCredentials = this.setCredentials.bind(this)
+    this.removeCredentials = this.removeCredentials.bind(this)
+
+    this.headers = { ...this.defaultHeaders }
+    this.setAuthHeaders()
+
   }
 
   setCredentials(user) {
@@ -18,6 +25,7 @@ class Api {
 
   removeCredentials() {
     localStorage.removeItem('currentUser')
+    this.headers = { ...this.defaultHeaders }
   }
 
   setAuthHeaders() {
@@ -27,6 +35,8 @@ class Api {
         ...this.headers,
         Authorization: 'Bearer ' + currentUser.token
       };
+    } else {
+      this.headers = {...this.defaultHeaders}
     }
   }
 
@@ -38,6 +48,7 @@ class Api {
   }
 
   async getAllDocuments() {
+    this.setAuthHeaders()
     return await this.api().get('/documents');
   }
 

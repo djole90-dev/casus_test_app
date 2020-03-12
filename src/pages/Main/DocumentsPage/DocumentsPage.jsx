@@ -1,35 +1,55 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { DocumentActions } from '../../../redux/actions';
 import DocumentsMenu from '../../../components/Documents/DocumentsMenu/DocumentsMenu';
 import DocumentCollection from '../../../components/Documents/DocumentCollection/DocumentCollection';
-import DocumentSorter from '../../../components/Documents/DocumentSorter/DocumentSorter'
+import DocumentSorter from '../../../components/Documents/DocumentSorter/DocumentSorter';
 import {
   TopContent,
   MainContent,
   MenuContainer,
   DocumentsContainer,
   Heading,
-  SearchBtn,
   SearchIcon
 } from './DocumentsPage.styles';
+import CustomButton from '../../../components/Common/CustomButton/CustomButton';
 
-const DocumentsPage = () => (
+const DocumentsPage = ({
+  filteredDocuments,
+  categories,
+  filterDocumentsByCategory
+}) => (
   <Fragment>
     <TopContent>
       <Heading>Dokumentvorlage auswählen</Heading>
       <DocumentSorter />
-      <SearchBtn>
-        <SearchIcon />
-      </SearchBtn>
+      <CustomButton btntype="btn-white" title={<SearchIcon />} />
     </TopContent>
     <MainContent>
       <MenuContainer>
-        <DocumentsMenu />
+        <DocumentsMenu
+          categories={categories}
+          filterDocumentsByCategory={filterDocumentsByCategory}
+        />
       </MenuContainer>
       <DocumentsContainer>
-        <DocumentCollection documents={[]} />
+        <DocumentCollection documents={filteredDocuments} />
       </DocumentsContainer>
     </MainContent>
   </Fragment>
 );
 
-export default DocumentsPage;
+const mapStateToProps = ({
+  docs: { documents, filteredDocuments, categories }
+}) => ({
+  documents,
+  filteredDocuments,
+  categories
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  filterDocumentsByCategory: (category) =>
+    dispatch(DocumentActions.filterDocumentsByCategory(category))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentsPage);

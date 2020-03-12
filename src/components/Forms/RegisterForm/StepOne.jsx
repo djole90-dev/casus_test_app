@@ -5,7 +5,13 @@ import CustomButton from '../../Common/CustomButton/CustomButton';
 import CheckboxGroup from '../../Common/CheckboxGroup/CheckboxGroup';
 import FormFooter from '../FormFooter/FormFooter';
 import PasswordStrengthMeter from '../../PasswordStrengthMeter/PasswordStrengthMeter';
-import { PasswordContainer, AcceptUrl, CheckboxContainer, RCP, Heading } from './RegisterForm.styles'
+import {
+  PasswordContainer,
+  AcceptUrl,
+  CheckboxContainer,
+  RCP,
+  Heading
+} from './RegisterForm.styles';
 
 const CbLabel = (
   <Fragment>
@@ -14,15 +20,20 @@ const CbLabel = (
   </Fragment>
 );
 
-
-const StepOne = ({values, handleChange, handleStepChange, setTermsChecked, errors }) => {
-  const { email, password, termsChecked } = values
+const StepOne = ({
+  values,
+  handleChange,
+  handleStepChange,
+  setTermsChecked,
+  errors
+}) => {
+  const { email, password, termsChecked } = values;
   const [ strVisible, setStrVisibility ] = useState(false);
   const [ subscribed, setSubscribed ] = useState(false);
 
   return (
     <Fragment>
-    <Heading variant="h3">Registrierung</Heading>
+      <Heading variant="h3">Registrierung</Heading>
       <TextInputGroup
         type="email"
         label="Emailadresse"
@@ -46,14 +57,16 @@ const StepOne = ({values, handleChange, handleStepChange, setTermsChecked, error
           error={errors.password}
           required
         />
-        {strVisible && <PasswordStrengthMeter password={password} />}
+        {strVisible || errors.password ? (
+          <PasswordStrengthMeter password={password} error={errors.password} />
+        ) : null}
       </PasswordContainer>
       <CheckboxContainer>
         <CheckboxGroup
           label={CbLabel}
           checked={termsChecked}
           name="terms"
-          handleChange={() => setTermsChecked(prev => !prev)}
+          handleChange={() => setTermsChecked((prev) => !prev)}
           error={termsChecked ? false : errors.terms}
         />
         <CheckboxGroup
@@ -64,7 +77,12 @@ const StepOne = ({values, handleChange, handleStepChange, setTermsChecked, error
         />
       </CheckboxContainer>
       <RCP src={reCAPTCHA_image} alt="Dummy reCAPTCHA" />
-      <CustomButton title="Weiter" actionbtn="true" onClick={handleStepChange}/>
+      <CustomButton
+        title="Weiter"
+        actionbtn="true"
+        onClick={handleStepChange}
+        btntype="action"
+      />
       <FormFooter
         text="Haben Sie bereits ein Konto?"
         url="/login"

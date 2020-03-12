@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Collapse, Box } from '@material-ui/core';
 import {
   Container,
@@ -10,35 +10,40 @@ import {
   Text
 } from './DocumentsMenu.styles';
 
-const ListItem = ({ text, active, name, onClick }) => (
- 
-    <MenuItem onClick={onClick}>
-      <Text active={active} data-categoryname={name}>
-        {text}
-      </Text>
-    </MenuItem>
-  
+export const ListItem = ({ text, active, name, onClick }) => (
+  <MenuItem onClick={onClick}>
+    <Text active={active} data-categoryname={name}>
+      {text}
+    </Text>
+  </MenuItem>
 );
 
-const DocumentsMenu = ({
-  categories = [ 'Category 1', 'Category 2', 'Category 3' ]
-}) => {
-  const [ collapsed, setCollaps ] = useState(false);
-  const [ selectedCategory, setSelectedCategory ] = useState(
-    categories.length ? categories[0] : null
-  );
+export const DocumentsMenu = ({ categories, filterDocumentsByCategory }) => {
+  const [ isOpen, setCollaps ] = useState(true);
+  const [ selectedCategory, setSelectedCategory ] = useState(null);
+
   const handleListItemClick = (e) => {
-    setSelectedCategory(e.target.dataset.categoryname)
+    setSelectedCategory(e.target.dataset.categoryname);
   };
+
+  const handleArrowClick = () => setCollaps(prev => !prev)
+
+  useEffect(() => {
+    filterDocumentsByCategory(selectedCategory)
+  }, [selectedCategory, filterDocumentsByCategory])
 
   return (
     <Container>
-      <Box onClick={() => setCollaps((prev) => !prev)}>
-        <Heading>
-          {collapsed ? <ArrowDropDownIcon /> : <ArrowRightIcon />}CASUS vorlagen
+      <Box onClick={() => setSelectedCategory(null)}>
+        <Heading active={!selectedCategory ? 'true' : null}>
+          {isOpen ? (
+            <ArrowDropDownIcon onClick={handleArrowClick} />
+          ) : (
+            <ArrowRightIcon onClick={handleArrowClick} />
+          )}CASUS vorlagen
         </Heading>
       </Box>
-      <Collapse in={collapsed}>
+      <Collapse in={isOpen}>
         <ListContainer>
           {categories.map((cat) => (
             <ListItem
@@ -55,4 +60,5 @@ const DocumentsMenu = ({
   );
 };
 
-export default DocumentsMenu;
+
+export default DocumentsMenu

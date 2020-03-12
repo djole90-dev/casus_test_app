@@ -11,12 +11,13 @@ export const Heading = styled(Typography)`
   font-size: 16px;
   letter-spacing: 0.23px;
   line-height:1.31;
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ active, theme }) =>
+    active ? theme.palette.primary.main : '#747782'};
   display:flex;
   align-items: center;
   font-weight:bold;
   cursor: pointer;
-  border-bottom: 3px solid ${({ theme }) => theme.palette.primary.main};
+  border-bottom: 3px solid ${({ theme, active }) => active ? theme.palette.primary.main : 'transparent'};
   margin-bottom:17px;
 `;
 const iconStyles = css`
@@ -40,6 +41,7 @@ export const Text = styled(Typography)`
   border-bottom: ${({ active, theme }) =>
     active ? `3px solid ${theme.palette.primary.main}` : 'transparent'};;
   width: max-content;
+  text-transform: capitalize;
 `;
 
 export const MenuItem = styled('div')`

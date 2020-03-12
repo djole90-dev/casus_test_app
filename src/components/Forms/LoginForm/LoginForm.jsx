@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
-import { AuthActions } from '../../../redux/actions';
+import React from 'react';
 import { Heading } from '../common-styles';
 import { Form } from './LoginForm.styles';
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
@@ -9,21 +6,14 @@ import CustomButton from '../../Common/CustomButton/CustomButton';
 import FormFooter from '../FormFooter/FormFooter';
 import MessagePopup from '../../Common/MessagePopup/MessagePopup';
 
-const RegisterForm = ({ loginUser, history }) => {
-  const [ state, setState ] = useState({ email: '', password: '' });
-  const [ errorMessage, setErrorMessage ] = useState(null);
-
-  const handleSubmit = (e) => {
-    setErrorMessage(null);
-    e.preventDefault();
-    loginUser(state, history)
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
-
+const LoginForm = ({
+  isLoading,
+  handleChange,
+  handleSubmit,
+  state,
+  errMsg,
+  setErrorMessage
+}) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Heading variant="h3">Log in</Heading>
@@ -44,22 +34,24 @@ const RegisterForm = ({ loginUser, history }) => {
         onChange={handleChange}
         required
       />
-      <CustomButton title="Log in" actionbtn="true" type="submit" />
+      <CustomButton
+        title={!isLoading ? 'Log in' : 'Logging in ...'}
+        actionbtn="true"
+        type="submit"
+        isLoading={isLoading}
+        btntype="action"
+      />
       <FormFooter
         text="Haben Sie noch kein Konto?"
         url="/"
         urlText="Registrierung"
       />
       <MessagePopup
-        errorMessage={errorMessage}
+        errorMessage={errMsg}
         onClose={() => setErrorMessage(null)}
       />
     </Form>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  loginUser: (data, history) => dispatch(AuthActions.loginStart(data, history))
-});
-
-export default connect(null, mapDispatchToProps)(withRouter(RegisterForm));
+export default LoginForm;

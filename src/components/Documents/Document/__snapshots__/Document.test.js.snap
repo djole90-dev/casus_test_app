@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Document Component should match snapshot 1`] = `
+<Styled(Styled(MuiBox))>
+  <Styled(WithStyles(ForwardRef(Typography)))>
+    Title
+  </Styled(WithStyles(ForwardRef(Typography)))>
+  <C_Logo
+    category="123"
+  />
+</Styled(Styled(MuiBox))>
+`;

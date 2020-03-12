@@ -7,12 +7,14 @@ export const CopySection = styled(Box)`
   background: ${({ theme }) => theme.palette.primary.main};
   display:flex;
   align-items:center;
+  padding-right: 2.6%;
+  padding-left: 1.36%;
 `;
 
 export const CopyContent = styled(Box)`
   color: #fff;
-  width:320px;
-  margin-left:112px;
+  width:311px;
+  margin: 0 auto;
 `;
 export const HeadingContent = styled(Box)`
   margin-bottom: 32px;
@@ -32,15 +34,14 @@ export const AuthSection = styled(Box)`
   background: ${({ theme }) => theme.palette.primary.bgLight};
   overflow-y:auto;
   display:flex;
-  align-items:center;
 `;
 
 export const AuthContent = styled(Box)`
   width:320px;
-  margin-right:278px;
-  margin-left:auto;
+  padding-right: 34px;
+  margin: 0 auto;
   display: flex;
-  align-items:center;
+  align-items:flex-start;
 `
 
 export const Container = styled(Box)`

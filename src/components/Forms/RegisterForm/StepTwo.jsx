@@ -10,9 +10,15 @@ const selectOptions = [
   { label: 'Position 3', value: 'Position 3' }
 ];
 
-const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
+const StepTwo = ({
+  values,
+  handleChange,
+  handleStepChange,
+  errors,
+  isLoading
+}) => {
   const { firstname, lastname, position } = values;
- 
+
   return (
     <Fragment>
       <Heading variant="h3">Noch einen Schritt</Heading>
@@ -28,6 +34,7 @@ const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
       <TextInputGroup
         type="text"
         label="Ihr Nachname"
+        placeholder="z.B. Wagner"
         name="lastname"
         value={lastname}
         onChange={handleChange}
@@ -39,18 +46,23 @@ const StepTwo = ({ values, handleChange, handleStepChange, errors}) => {
         value={position}
         options={selectOptions}
         error={errors.position}
+        label="Ihre Position"
       />
       <CustomButton
-        title="CASUS-Konto erstellen"
+        title={!isLoading ? 'CASUS-Konto erstellen' : 'Konto wird erstellt...'}
         actionbtn="true"
         type="submit"
-        style={{marginBottom: '24px'}}
+        isLoading={isLoading}
+        style={{ marginBottom: '24px' }}
+        btntype="action"
       />
-       <CustomButton
+      <CustomButton
         title="Zurück"
         actionbtn="true"
         type="button"
+        disabled={isLoading}
         onClick={handleStepChange}
+        btntype="action"
       />
     </Fragment>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import {
   CopySection,
   AuthSection,
@@ -11,8 +11,8 @@ import {
   AuthContent
 } from './AuthenticationPage.styles';
 import authPageContent from '../../constants/content/authPageContent';
-import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm';
-import LoginForm from '../../components/Forms/LoginForm/LoginForm';
+import RegisterFormContainer from '../../containers/Forms/RegisterFormContainer';
+import LoginFormContainer from '../../containers/Forms/LoginFormContainer';
 
 const AuthenticationPage = () => (
   <Container>
@@ -32,8 +32,9 @@ const AuthenticationPage = () => (
     </CopySection>
     <AuthSection>
       <AuthContent>
-        <Route path="/" exact component={RegisterForm} />
-        <Route path="/login" exact component={LoginForm} />
+        <Route path="/" exact component={RegisterFormContainer} />
+        <Route path="/login" exact component={LoginFormContainer} />
+        <Redirect to="/" />
       </AuthContent>
     </AuthSection>
   </Container>

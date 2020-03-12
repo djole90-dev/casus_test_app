@@ -8,7 +8,7 @@ const AlertMessage = (props) => (
   <Alert elevation={6} variant="filled" {...props} />
 );
 
-const MessagePopup = ({ errorMessage, message }) => {
+const MessagePopup = ({ errorMessage, successMessage }) => {
   const dispatch = useDispatch();
 
   const handleClose = useCallback(
@@ -20,7 +20,7 @@ const MessagePopup = ({ errorMessage, message }) => {
 
   return (
     <Snackbar
-      open={errorMessage || message ? true : false}
+      open={errorMessage || successMessage ? true : false}
       autoHideDuration={4000}
       onClose={handleClose}
     >
@@ -28,7 +28,7 @@ const MessagePopup = ({ errorMessage, message }) => {
         onClose={handleClose}
         severity={errorMessage ? 'error' : 'success'}
       >
-        {errorMessage || message}
+        {errorMessage || successMessage}
       </AlertMessage>
     </Snackbar>
   );

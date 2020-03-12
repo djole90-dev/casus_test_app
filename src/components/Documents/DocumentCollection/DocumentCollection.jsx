@@ -2,16 +2,10 @@ import React from 'react';
 import { Container } from './DocumentCollection.styles';
 import Document from '../Document/Document';
 
-const DocumentCollection = ({ documents = [] }) => {
+const DocumentCollection = ({ documents }) => {
   return (
     <Container>
-      <Document title="Document 1" />
-      <Document title="Document 1" />
-      <Document title="Document 1" />
-      <Document title="Document 1" />
-      <Document title="Document 1" />
-      <Document title="Document 1" />
-      <Document title="Document 1" />
+      {documents.map((doc, i) => <Document key={i} title={doc.title} category={doc.category} />)}
     </Container>
   );
 };

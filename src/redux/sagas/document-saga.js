@@ -8,8 +8,7 @@ const getAllDocuments = function*() {
     const { data } = yield call(Api.getAllDocuments);
     yield put(DocumentActions.getDocumentsSuccess(data.data));
   } catch (err) {
-    console.log(err);
-    yield put(DocumentActions.getDocumentsFail(err.response.data.toString()));
+    yield put(DocumentActions.getDocumentsFail(err.response.data.message));
   }
 };
 
@@ -18,8 +17,7 @@ const getOneDocument = function*({ payload, id }) {
     const { data } = yield call(Api.getOneDocument, payload);
     yield put(DocumentActions.getOneDocumentSuccess(data.data));
   } catch (err) {
-    console.log(err);
-    yield put(DocumentActions.getOneDocumentFail(err.response.data.toString()));
+    yield put(DocumentActions.getOneDocumentFail(err.response.data.message));
   }
 };
 
@@ -28,8 +26,7 @@ const editOneDocument = function*({ payload: { data, id } }) {
     const res = yield call(Api.editDocument, id, data);
     yield put(DocumentActions.editDocumentSuccess(res.data.data));
   } catch (err) {
-    console.log(err);
-    yield put(DocumentActions.getOneDocumentFail(err.response.data.toString()));
+    yield put(DocumentActions.getOneDocumentFail(err.response.data.message));
   }
 };
 

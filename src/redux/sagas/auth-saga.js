@@ -5,13 +5,10 @@ import Api from '../api/api';
 
 const registerUser = function*({ payload, history }) {
   try {
-    console.log(Api);
-    const res = yield call(Api.registerUser, payload);
-    console.log(res);
+    yield call(Api.registerUser, payload);
     yield put(AuthActions.registerSuccess());
     yield call(history.push, '/login');
   } catch (err) {
-    console.log(err);
     yield put(AuthActions.registerFail(err.response.data.message));
   }
 };

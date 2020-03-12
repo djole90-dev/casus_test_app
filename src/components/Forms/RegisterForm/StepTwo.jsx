@@ -56,14 +56,15 @@ const StepTwo = ({
         style={{ marginBottom: '24px' }}
         btntype="action"
       />
-      <CustomButton
-        title="Zurück"
-        actionbtn="true"
-        type="button"
-        disabled={isLoading}
-        onClick={handleStepChange}
-        btntype="action"
-      />
+      {!isLoading && (
+        <CustomButton
+          title="Zurück"
+          actionbtn="true"
+          type="button"
+          onClick={handleStepChange}
+          btntype="action"
+        />
+      )}
     </Fragment>
   );
 };

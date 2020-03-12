@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types'
 import reCAPTCHA_image from '../../../assets/recaptcha.JPG';
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
 import CustomButton from '../../Common/CustomButton/CustomButton';
@@ -91,5 +92,14 @@ const StepOne = ({
     </Fragment>
   );
 };
+
+StepOne.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleStepChange: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
+  setTermsChecked: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+}
+
 
 export default StepOne;

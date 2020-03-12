@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 import { Collapse, Box } from '@material-ui/core';
 import {
   Container,
@@ -17,6 +18,7 @@ export const ListItem = ({ text, active, name, onClick }) => (
     </Text>
   </MenuItem>
 );
+
 
 export const DocumentsMenu = ({ categories, filterDocumentsByCategory }) => {
   const [ isOpen, setCollaps ] = useState(true);
@@ -59,6 +61,17 @@ export const DocumentsMenu = ({ categories, filterDocumentsByCategory }) => {
     </Container>
   );
 };
+
+ListItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+}
+
+DocumentsMenu.propTypes = {
+  categories: PropTypes.array.isRequired,
+  filterDocumentsByCategory: PropTypes.func.isRequired
+}
 
 
 export default DocumentsMenu

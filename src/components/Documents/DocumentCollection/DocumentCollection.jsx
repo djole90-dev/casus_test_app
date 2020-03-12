@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Container } from './DocumentCollection.styles';
 import Document from '../Document/Document';
 
@@ -9,5 +10,9 @@ const DocumentCollection = ({ documents }) => {
     </Container>
   );
 };
+
+DocumentCollection.propTypes = {
+  documents: PropTypes.array.isRequired
+}
 
 export default DocumentCollection;

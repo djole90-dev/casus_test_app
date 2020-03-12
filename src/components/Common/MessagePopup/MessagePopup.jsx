@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux';
 import { Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
@@ -33,5 +34,11 @@ const MessagePopup = ({ errorMessage, successMessage }) => {
     </Snackbar>
   );
 };
+
+AlertMessage.propTypes = {
+  severity: PropTypes.oneOf(['error', 'success']).isRequired,
+  onClose: PropTypes.func.isRequired
+}
+
 
 export default MessagePopup;

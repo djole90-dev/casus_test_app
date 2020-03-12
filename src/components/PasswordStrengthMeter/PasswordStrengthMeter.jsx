@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {
   Container,
   Content,
@@ -28,5 +29,14 @@ const PasswordStrengthMeter = ({ password, error }) => {
     </Container>
   );
 };
+
+CheckEl.propTypes = {
+  label: PropTypes.string.isRequired,
+  strength: PropTypes.number.isRequired
+}
+
+PasswordStrengthMeter.propTypes = {
+  password: PropTypes.string.isRequired
+}
 
 export default PasswordStrengthMeter;

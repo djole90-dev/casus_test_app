@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { FormControl, Select, MenuItem } from '@material-ui/core';
 import {
   StyledInputBase,
@@ -7,7 +8,7 @@ import {
   Text
 } from './SelectGroup.styles';
 
-const SelectGroup = ({ handleChange, value, options, name, error, label }) => {
+const SelectGroup = ({ handleChange, value = 1, options, name, error, label }) => {
   return (
     <FormControl style={{ width: '100%' }}>
       <Label>{label}</Label>
@@ -30,5 +31,16 @@ const SelectGroup = ({ handleChange, value, options, name, error, label }) => {
     </FormControl>
   );
 };
+
+SelectGroup.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  options: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.bool,
+  label: PropTypes.string.isRequired
+}
 
 export default SelectGroup;

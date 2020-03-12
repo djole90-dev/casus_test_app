@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { FormControlLabel, Checkbox } from '@material-ui/core';
 import { Label } from './CheckboxGroup.styles';
 import Colors from '../../../constants/colors';
@@ -40,5 +41,15 @@ const CheckboxGroup = ({
     />
   );
 };
+
+CheckboxGroup.propTypes = {
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired,
+  checked: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  error: PropTypes.bool
+}
 
 export default CheckboxGroup;

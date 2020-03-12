@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { DocumentActions } from '../../../redux/actions';
 import DocumentsMenu from '../../../components/Documents/DocumentsMenu/DocumentsMenu';
@@ -51,5 +52,11 @@ const mapDispatchToProps = (dispatch) => ({
   filterDocumentsByCategory: (category) =>
     dispatch(DocumentActions.filterDocumentsByCategory(category))
 });
+
+DocumentsPage.propTypes = {
+  filteredDocuments: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
+  filterDocumentsByCategory: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentsPage);

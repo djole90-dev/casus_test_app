@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import MessagePopup from '../../Common/MessagePopup/MessagePopup';
@@ -46,5 +47,16 @@ const RegisterForm = ({
     </Form>
   );
 };
+
+RegisterForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleStepChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  state: PropTypes.object.isRequired,
+  setTermsChecked: PropTypes.func.isRequired,
+  clearMessages: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+}
 
 export default RegisterForm;

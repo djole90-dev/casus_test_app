@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'
 import {
   InputGroupContainer,
   InputEl,
@@ -39,5 +40,12 @@ const TextInputGroup = ({ label, ...otherProps }) => {
     </InputGroupContainer>
   );
 };
+
+TextInputGroup.propTypes = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.bool
+}
 
 export default TextInputGroup;

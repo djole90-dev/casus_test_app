@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types'
 import TextInputGroup from '../../Common/TextInputGroup/TextInputGroup';
 import CustomButton from '../../Common/CustomButton/CustomButton';
 import SelectGroup from '../../Common/SelectGroup/SelectGroup';
@@ -68,5 +69,13 @@ const StepTwo = ({
     </Fragment>
   );
 };
+
+StepTwo.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleStepChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  values: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+}
 
 export default StepTwo;

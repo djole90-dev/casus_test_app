@@ -14,7 +14,7 @@ import {
   DropdownMenuContent,
   LogoutButton
 } from './Header.styles';
-import logo_image from '../../assets/logo.JPG';
+import logoimg from '../../assets/logo.jpg';
 
 const actionText = (
   <Fragment>
@@ -26,7 +26,7 @@ const actionText = (
 const Header = ({ logoutUser }) => {
   return (
     <HeaderContainer>
-      <Logo src={logo_image} alt="header logo" />
+      <Logo src={logoimg} alt="header logo" />
       <Container>
         <HeaderIcons />
         <Navigation />

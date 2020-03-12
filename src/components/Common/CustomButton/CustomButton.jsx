@@ -20,7 +20,6 @@ CustomButton.propTypes = {
     PropTypes.element
   ]).isRequired,
   isLoading: PropTypes.bool,
-  btntype: PropTypes.string,
 }
 
 export default CustomButton;

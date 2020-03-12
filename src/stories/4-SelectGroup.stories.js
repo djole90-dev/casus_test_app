@@ -26,5 +26,5 @@ export const WithSelectedValue = () => (
   <SelectGroup {...selectGroupData} {...actionsData}/>
 );
 
-export const WithError = () => <SelectGroup {...selectGroupData} {...actionsData} value={null} error="true"/>
+export const WithError = () => <SelectGroup {...selectGroupData} {...actionsData} value={''} error="true"/>
 

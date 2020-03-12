@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 9010 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -45,10 +45,10 @@
     ]
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
     "@storybook/addon-actions": "^5.3.14",
     "@storybook/addon-links": "^5.3.14",
     "@storybook/addons": "^5.3.14",
+    "@storybook/cli": "^5.3.14",
     "@storybook/preset-create-react-app": "^2.0.0",
     "@storybook/react": "^5.3.14",
     "enzyme": "^3.11.0",

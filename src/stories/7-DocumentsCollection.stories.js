@@ -8,10 +8,12 @@ export default {
 
 export const documentData = {
   documents: [
-    { title: 'Category 1 Title', category: 'Category 1' },
-    { title: 'Category 1 Title', category: 'Category 1' },
-    { title: 'Category 2 Title', category: 'Category 2' },
-    { title: 'Category 3 Title', category: 'Category 3' }
+    { title: 'Category 1 Title', category: 'Choi' },
+    { title: 'Category 1 Title', category: 'Choi' },
+    { title: 'Category 2 Title', category: 'Bananas' },
+    { title: 'Category 3 Title', category: 'Cars' },
+    { title: 'Category 2 Title', category: 'Bananas' },
+    { title: 'Category 3 Title', category: 'Cars' },
   ]
 };
 

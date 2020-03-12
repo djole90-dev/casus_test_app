@@ -13,3 +13,4 @@ export const documentData = {
 }
 
 export const SingleDocument = () => <Document {...documentData} />
+

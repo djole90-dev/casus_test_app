@@ -11,7 +11,7 @@ import { StylesProvider, MuiThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../themes/theme';
-import logo_image from '../../assets/logo.JPG';
+import logo_image from '../../assets/logo.jpg';
 
 const MainLayout = ({ children, isAuthenticated }) => (
   <StylesProvider injectFirst>
